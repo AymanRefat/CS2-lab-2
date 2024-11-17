@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <queue>
 using namespace std ;
 
 // 24-hour format
@@ -29,35 +30,32 @@ public:
 
 
 class Patient {
-    string name , ID ;
+private:
+    string name , id ;
     char gender ; // Stored in lower
     Time time ;
     bool urgent ;
 public:
-    Patient( string _name , string _ID, char gender , Time _time, bool _urgent ) {
+    Patient( string _name , string _id, char _gender , Time _time, bool _urgent = false) {
         name = _name;
-        ID = _ID;
-        set_gender(gender);
+        id = _id;
+        set_gender(_gender);
         time = _time ;
         urgent = _urgent;
     }
     void set_gender(char g){
-       g = tolower(g);
-       if ( g == 'm' || g == 'f'){
-           this->gender = g;
-       }
-       else {
-           throw invalid_argument("Wrong Gender, Gender should be 'M' or 'F' ");
-       }
+        g = tolower(g);
+        if ( g != 'm' && g != 'f')
+            throw invalid_argument("Wrong gender format, gender must be 'M' or 'F'");
+        this->gender = g;
     }
     bool is_urgent(){ return urgent ; }
 
 };
 
 class Queue {
-    queue<Patient*> urgent, normal ;
-
-
+private:
+    queue<Patient*> urgent, normal;
 public:
     void add( Patient *p){
         if ( p->is_urgent()){
