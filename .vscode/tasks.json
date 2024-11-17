@@ -9,6 +9,7 @@
         "-g",
         "main.cpp",
         "sources/time.cpp",
+        "sources/patient.cpp",
         "-o",
         "${fileDirname}\\${fileBasenameNoExtension}.exe"
       ],

@@ -6,6 +6,7 @@
 
 // Include the necessary headers
 #include "../headers/time.h"
+#include "../utilities/enums.h"
 
 // Use the necessary standard namespace
 using std::string;
@@ -24,7 +25,7 @@ private:
 public:
 
     // Constructors
-    Patient(string , string, char, Time, PatientType = NORMAL);
+    Patient(string , string, char, Time, PatientType = PatientType::NORMAL);
 
     // Setters and Getters
     PatientType is_urgent();

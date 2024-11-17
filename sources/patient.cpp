@@ -1,9 +1,8 @@
 #include "../headers/patient.h"
-#include "../utilities/enums.h"
 
 
 // Constructors
-Patient::Patient( string _name , string _id, char _gender , Time _arrivalTime, PatientType _urgent = NORMAL){
+Patient::Patient(string _name, string _id, char _gender, Time _arrivalTime, PatientType _urgent){
     name = _name;
     id = _id;
     set_gender(_gender);
