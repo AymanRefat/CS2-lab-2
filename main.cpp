@@ -5,34 +5,24 @@ using namespace std ;
 
 // 24-hour format
 class Time{
+private:
     int hours ;
-    int mins ;
+    int minutes ;
 public:
 
-    Time(){
-        set_mins(0);
-        set_hours(0);
-    }
-
-    Time( int _hours , int _mins){
+    Time( int _hours = 0, int _minutes = 0){
         set_hours(_hours);
-        set_mins(_mins);
+        set_minutes(_minutes);
     }
     void set_hours(int _hours){
-        if ( _hours >=0 && _hours < 24 ){
-            hours = _hours;
-        }
-        else {
-            throw invalid_argument("Wrong hours, hours should be in range [0,24)");
-        }
+        if ( _hours < 0 && _hours >= 24 )
+            throw invalid_argument("Wrong time format, hours should be in range [0,24)");
+        hours = _hours;
     }
-    void set_mins(int _mins){
-       if ( _mins >= 0 && _mins < 60 ) {
-           mins = _mins;
-       }
-       else {
-           throw invalid_argument("Wrong mintues , Mintues should be between [0,60)");
-       }
+    void set_minutes(int _minutes){
+        if (_minutes < 0 && _minutes >= 60) 
+            throw invalid_argument("Wrong time format , Mintues should be between [0,60)");
+        minutes = _minutes;
     }
 
 };
