@@ -1,7 +1,15 @@
 #ifndef TIME_H
 #define TIME_H
-#include <ostream>
 
+// Include the necessary libraries
+#include <ostream>
+#include <stdexcept>
+
+// Use the necessary standard namespace
+using std::ostream;
+using std::invalid_argument;
+
+// Time class
 class Time {
   // Static member to store the system time
   private:
@@ -40,8 +48,8 @@ class Time {
     Time operator-(Time &&);
 
     // Friend functions
-    friend std::ostream& operator<<(std::ostream &, Time &);
-    friend std::ostream& operator<<(std::ostream &, Time &&);
+    friend ostream& operator<<(ostream &, Time &);
+    friend ostream& operator<<(ostream &, Time &&);
     
     // Setters and Getters
     void set_hours(int);

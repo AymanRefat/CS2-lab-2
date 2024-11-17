@@ -1,5 +1,4 @@
 #include "../headers/time.h"
-#include <stdexcept>
 
 // Static member initialization
 Time Time::systemTime = Time(10, 30);
@@ -104,11 +103,11 @@ Time Time::operator-(Time &&otherTime){
 
 
 // Friend functions
-std::ostream& operator<<(std::ostream &out, Time &time){
+ostream& operator<<(ostream &out, Time &time){
     out << time.get_hours() << ":" << time.get_minutes();
     return out;
 }
-std::ostream& operator<<(std::ostream &out, Time &&time){
+ostream& operator<<(ostream &out, Time &&time){
     operator<<(out, static_cast<Time&>(time));
     return out;
 }
@@ -116,13 +115,13 @@ std::ostream& operator<<(std::ostream &out, Time &&time){
 // Setters and Getters
 void Time::set_hours(int _hours){
     if ( _hours < 0 && _hours >= 24 )
-        throw std::invalid_argument("Wrong time format, hours should be in range [0,24)");
+        throw invalid_argument("Wrong time format, hours should be in range [0,24)");
     hours = _hours;
 }
 
 void Time::set_minutes(int _minutes){
     if (_minutes < 0 && _minutes >= 60) 
-        throw std::invalid_argument("Wrong time format , Mintues should be between [0,60)");
+        throw invalid_argument("Wrong time format , Mintues should be between [0,60)");
     minutes = _minutes;
 }
 
