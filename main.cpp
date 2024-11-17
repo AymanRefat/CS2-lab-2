@@ -1,100 +1,13 @@
+// Include the necessary headers
 #include <iostream>
 #include <string>
 #include <stdexcept>
 #include <queue>
+#include "headers/time.h"
+
+// Use the necessary standard namespace
 using namespace std ;
-
 enum PatientType { URGENT , NORMAL };
-
-// 24-hour format
-class Time{
-public:
-    static Time systemTime;
-    static Time getSystemTime(){
-        return systemTime;
-    }
-private:
-    int hours ;
-    int minutes ;
-public:
-
-    Time( int _hours = 0, int _minutes = 0){
-        set_hours(_hours);
-        set_minutes(_minutes);
-    }
-    void set_hours(int _hours){
-        if ( _hours < 0 && _hours >= 24 )
-            throw invalid_argument("Wrong time format, hours should be in range [0,24)");
-        hours = _hours;
-    }
-    void set_minutes(int _minutes){
-        if (_minutes < 0 && _minutes >= 60) 
-            throw invalid_argument("Wrong time format , Mintues should be between [0,60)");
-        minutes = _minutes;
-    }
-    int get_hours(){ return hours ; }
-    int get_minutes(){ return minutes ; }
-    bool operator==(Time &otherTime){
-        return hours == otherTime.get_hours() && minutes == otherTime.get_minutes();
-    }
-    bool operator!=(Time &otherTime){
-        return !(*this == otherTime);
-    }
-    bool operator>(Time &otherTime){
-        if ( hours > otherTime.get_hours() )
-            return true;
-        else if ( hours == otherTime.get_hours() && minutes > otherTime.get_minutes() )
-            return true;
-        return false;
-    }
-    bool operator>= (Time &otherTime){
-        return *this > otherTime || *this == otherTime;
-    }
-    bool operator>= (Time &&otherTime){
-        return operator>=(static_cast<Time&>(otherTime));
-    }
-    bool operator<(Time &otherTime){
-        return !(*this >= otherTime);
-    }
-    bool operator<=(Time &otherTime){
-        return !(*this > otherTime);
-    }
-
-    Time operator-(Time &otherTime) {
-        Time biggerTime, smallerTime;
-        if (*this < otherTime) {
-            biggerTime = otherTime;
-            smallerTime = *this;
-        } else {
-            biggerTime = *this;
-            smallerTime = otherTime;
-        }
-        int newHours = biggerTime.get_hours() - smallerTime.get_hours();
-        int newMinutes = biggerTime.get_minutes() - smallerTime.get_minutes();
-        if (newMinutes < 0) {
-            newHours--;
-            newMinutes += 60;
-        }
-        if (*this != biggerTime) {
-            newHours = -newHours;
-            newMinutes = -newMinutes;
-        }
-        return Time(newHours, newMinutes);
-    }
-
-    friend ostream& operator<<(ostream &out, Time &t){
-        out << t.get_hours() << ":" << t.get_minutes();
-        return out;
-    }
-    friend ostream& operator<<(ostream &out, Time &&t){
-        operator<<(out, static_cast<Time&>(t));
-        return out;
-    }
-
-};
-
-Time Time::systemTime = Time(0, 0);
-
 
 class Patient {
 private:
@@ -203,6 +116,7 @@ public:
 
 
 int main() {
+
     Patient p1("Ahmed", "123", 'M', Time(10, 30), URGENT);
     Patient p2("Ali", "124", 'M', Time(10, 30), NORMAL);
     Patient p3("Sara", "125", 'F', Time(10, 30), URGENT);
@@ -228,7 +142,8 @@ int main() {
 
     s.servePatients(5);
     s.printStatus();
-    Time::systemTime = Time(10, 40); // Just for testing. It should be private and updated by the system
+    for(int i = 0; i < 20; i++)
+        Time::advanceSystemTime();
     s.RemoveServedPatients();
     s.printStatus();
     return 0;
