@@ -10,6 +10,7 @@
         "main.cpp",
         "sources/time.cpp",
         "sources/patient.cpp",
+        "sources/scheduler.cpp",
         "-o",
         "${fileDirname}\\${fileBasenameNoExtension}.exe"
       ],
