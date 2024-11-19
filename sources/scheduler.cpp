@@ -86,3 +86,21 @@ void Scheduler::printStatus() {
 int Scheduler::getNumberOfWaitingPatients(){
     return urgent.size() + normal.size();
 }
+
+// Destructor
+Scheduler::~Scheduler(){
+    while(!urgent.empty()) {
+        if (urgent.front() != nullptr)
+            delete urgent.front();
+        urgent.pop();
+    }
+    while(!normal.empty()) {
+        if (normal.front() != nullptr)
+            delete normal.front();
+        normal.pop();
+    }
+    for (Patient *p : inService)
+        delete p;
+    for (Patient *p : served)
+        delete p;
+}
