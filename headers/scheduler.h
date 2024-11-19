@@ -24,7 +24,7 @@ class Scheduler {
 // Private members
 private:
     deque<Patient*> inService;
-    vector<Patient*> served, inQueue;
+    vector<Patient*> served;
     queue<Patient*> urgent, normal;
 
 // Public members

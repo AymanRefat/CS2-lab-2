@@ -2,14 +2,10 @@
 
 // Member functions
 void Scheduler::addPatient( Patient *p){
-    if ( p->is_urgent() == PatientType::URGENT ) {
+    if ( p->is_urgent() == PatientType::URGENT )
         urgent.push(p);
-        inQueue.push_back(p);
-    }
-    else {
+    else
         normal.push(p);
-        inQueue.push_back(p);
-    }
 }
 
 void Scheduler::servePatients(int numberOfPatients){
@@ -43,18 +39,41 @@ void Scheduler::RemoveServedPatients(){
 
 void Scheduler::printStatus() {
     // Current Time of the system
-    cout << "Current time: " << Time::getSystemTime() << '\n';
-
-    // Patients in service
-    cout << "Patients in service: \n[";
-    for (Patient *p : inService)
-        cout << p->get_id() << (p == inService.back() ? "" : ", ");
-    cout << "]\n";
+    cout << "\nCurrent time: " << Time::getSystemTime() << '\n';
 
     // Patients in queue
-    cout << "\nPatients waiting: \n[";
-    for (Patient *p : inQueue)
-        cout << p->get_id() << (p == inQueue.back() ? "" : ", ");
+
+    // Printing
+    queue<Patient*> tempUrgnet, tempNormal;
+    cout << "\nPatients in urgent queue: \n[";
+    while (!urgent.empty()) {
+        cout << urgent.front()->get_id() << (urgent.size() == 1 ? "" : ", ");
+        tempUrgnet.push(urgent.front());
+        urgent.pop();
+    }
+    cout << "]\n";
+    cout << "\nPatients in normal queue: \n[";
+    while(!normal.empty()) {
+        cout << normal.front()->get_id() << (normal.size() == 1 ? "" : ", ");
+        tempNormal.push(normal.front());
+        normal.pop();
+    }
+    cout << "]\n";
+    
+    // Re-adding the patients to the queues
+    while(!tempUrgnet.empty()) {
+        urgent.push(tempUrgnet.front());
+        tempUrgnet.pop();
+    }
+    while(!tempNormal.empty()) {
+        normal.push(tempNormal.front());
+        tempNormal.pop();
+    }
+
+    // Patients in service
+    cout << "\nPatients in service: \n[";
+    for (Patient *p : inService)
+        cout << p->get_id() << (p == inService.back() ? "" : ", ");
     cout << "]\n";
 
     // Patients served
