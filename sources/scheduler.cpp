@@ -62,7 +62,7 @@ void Scheduler::printStatus() {
     for ( auto p : urgent )
         cout << p->getId() << ", " ;
     for ( auto p : normal )
-        cout << p->getId() << ", ";
+        cout << p->getId() << (p == normal.back() ? "" : ",");
     cout << "]\n";
 
 

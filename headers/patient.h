@@ -23,7 +23,7 @@ public:
     // Setters and Getters
     bool isUrgent();
     int timeInService();
-    void set_gender(char);
+    void setGender(char);
     string getName();
     string getId();
     Time getArrivalTime();
