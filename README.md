@@ -3,6 +3,9 @@
 ## Description  
 This project is developed as an assignment for **CSCE110204 - Fundamentals of Comp II Lab** at AUC. It simulates a healthcare prioritization queue, where patients are served based on their status. The system ensures efficient management of patient queues to prioritize urgent cases.  
 
+## Installation Instructions
+Make sure that your compiler is actually compiling all `.cpp` file, not just `main.cpp`. In VSCode, this is done by adding the files to the `task.json` file.
+
 ## Usage  
 To simulate an advance in the system's time:  
 1. Press the **Enter** key.  
