@@ -2,6 +2,8 @@
 
 // Member functions
 void Scheduler::addPatient( Patient *p){
+    // This function should receive a POINTER not a reference to a variable.
+    // We suppose that the patient is created properly as a pointer.
     if ( p->is_urgent() == PatientType::URGENT )
         urgent.push(p);
     else
