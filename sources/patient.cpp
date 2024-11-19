@@ -14,6 +14,7 @@ Patient::Patient(string _name, string _id, char _gender, Time _arrivalTime, Pati
 Time Patient::timeInService(){
     return (Time::getSystemTime() - arrivalTime);
 }
+
 void Patient::set_gender(char g){
     g = tolower(g);
     if ( g != 'm' && g != 'f')

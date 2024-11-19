@@ -28,9 +28,9 @@ public:
     Patient(string , string, char, Time, PatientType = PatientType::NORMAL);
 
     // Setters and Getters
+    void set_gender(char);
     PatientType is_urgent();
     Time timeInService();
-    void set_gender(char);
     string get_name();
     string get_id();
 
