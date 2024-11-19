@@ -1,17 +1,11 @@
-#ifndef PATIENT_H
-#define PATIENT_H
-
-// Include the neccessary libraries
+#ifndef LABASSIGNMENT_PATIENT_H
+#define LABASSIGNMENT_PATIENT_H
+#include <iostream>
 #include <string>
-
-// Include the necessary headers
 #include "../headers/time.h"
-#include "../utilities/enums.h"
+#include "../headers/utilities.h"
+using namespace std ;
 
-// Use the necessary standard namespace
-using std::string;
-
-// Patient class
 class Patient {
 
 // Private members
@@ -19,8 +13,7 @@ private:
     string name , id ;
     char gender ;
     Time arrivalTime ;
-    PatientType urgent ;
-
+    PatientType type ;
 // Public members
 public:
 
@@ -28,12 +21,12 @@ public:
     Patient(string , string, char, Time, PatientType = PatientType::NORMAL);
 
     // Setters and Getters
+    bool is_urgent();
+    int timeInService();
     void set_gender(char);
-    PatientType is_urgent();
-    Time timeInService();
     string get_name();
     string get_id();
+    Time get_arrival_time();
 
 };
-
-#endif // PATIENT_H
+#endif //LABASSIGNMENT_PATIENT_H

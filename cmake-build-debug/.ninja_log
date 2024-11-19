@@ -1,0 +1,22 @@
+# ninja log v6
+15	3264	1732031780154909607	CMakeFiles/LabAssignment.dir/sources/scheduler.cpp.o	13f337bac69cd71
+14	3129	1732031780154469559	CMakeFiles/LabAssignment.dir/sources/utilities.cpp.o	523871613cb68d81
+3264	3508	1732031783404703982	LabAssignment	2163015019cd211
+20	2316	1732018258493118886	CMakeFiles/LabAssignment.dir/patient.cpp.o	246d018c56e6abaf
+13	3226	1732031780152869534	CMakeFiles/LabAssignment.dir/main.cpp.o	542411ce9a2281d8
+3	119	1732032610756804528	build.ninja	959994a8ef4a90
+14	3011	1732031780154036969	CMakeFiles/LabAssignment.dir/sources/patient.cpp.o	cf7ef2ddc09d9d1f
+7	2472	1732030917244266486	CMakeFiles/LabAssignment.dir/sources/time.cpp.o	e1e8d029c741f491
+11	2973	1732017294781169175	CMakeFiles/LabAssignment.dir/time.cpp.o	6c81e68367c0bcd5
+3	101	1732032610756804528	build.ninja	959994a8ef4a90
+1	1251	1732032610771090748	CMakeFiles/LabAssignment.dir/sources/time.cpp.o	e1e8d029c741f491
+2	1393	1732032610771288083	CMakeFiles/LabAssignment.dir/sources/patient.cpp.o	cf7ef2ddc09d9d1f
+2	1473	1732032610771656003	CMakeFiles/LabAssignment.dir/sources/utilities.cpp.o	523871613cb68d81
+1	1571	1732032610770760494	CMakeFiles/LabAssignment.dir/main.cpp.o	542411ce9a2281d8
+14	2860	1732032678284686857	CMakeFiles/LabAssignment.dir/sources/time.cpp.o	e1e8d029c741f491
+21	5750	1732032704209202804	CMakeFiles/LabAssignment.dir/sources/time.cpp.o	e1e8d029c741f491
+23	6011	1732032704210833203	CMakeFiles/LabAssignment.dir/sources/patient.cpp.o	cf7ef2ddc09d9d1f
+25	6363	1732032704212579145	CMakeFiles/LabAssignment.dir/sources/utilities.cpp.o	523871613cb68d81
+16	6638	1732032704204539318	CMakeFiles/LabAssignment.dir/main.cpp.o	542411ce9a2281d8
+26	6645	1732032704214284920	CMakeFiles/LabAssignment.dir/sources/scheduler.cpp.o	13f337bac69cd71
+6645	7060	1732032710833382427	LabAssignment	2163015019cd211

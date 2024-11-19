@@ -1,49 +1,49 @@
 // Include the necessary libraries
 #include <iostream>
 #include <string>
-#include <stdexcept>
 #include <queue>
-
-// Include the necessary headers
-#include "headers/time.h"
 #include "headers/patient.h"
 #include "headers/scheduler.h"
-#include "utilities/enums.h"
-
-// Use the necessary standard namespace
+#include "headers/time.h"
 using namespace std ;
 
-
 int main() {
-
-    Patient *p1 = new Patient("Ahmed", "123", 'M', Time(10, 30), PatientType::URGENT);
-    Patient *p2 = new Patient("Ali", "124", 'M', Time(10, 30), PatientType::NORMAL);
-    Patient *p3 = new Patient("Sara", "125", 'F', Time(10, 30), PatientType::URGENT);
-    Patient *p4 = new Patient("Nada", "126", 'F', Time(10, 30), PatientType::NORMAL);
-    Patient *p5 = new Patient("Mohamed", "127", 'M', Time(10, 30), PatientType::URGENT);
-    Patient *p6 = new Patient("Hassan", "128", 'M', Time(10, 30), PatientType::NORMAL);
-    Patient *p7 = new Patient("Nour", "129", 'F', Time(10, 30), PatientType::URGENT);
-    Patient *p8 = new Patient("Omar", "130", 'M', Time(10, 30), PatientType::NORMAL);
-    Patient *p9 = new Patient("Hala", "131", 'F', Time(10, 30), PatientType::URGENT);
-    Patient *p10 = new Patient("Yara", "132", 'F', Time(10, 30), PatientType::NORMAL);
-
+    int count = get_patients_count_based_on_scenario();
+    cout << "Number of Patients: " << count <<endl ;
     Scheduler s;
-    s.addPatient(p1);
-    s.addPatient(p2);
-    s.addPatient(p3);
-    s.addPatient(p4);
-    s.addPatient(p5);
-    s.addPatient(p6);
-    s.addPatient(p7);
-    s.addPatient(p8);
-    s.addPatient(p9);
-    s.addPatient(p10);
+    vector<Patient*> patients;
+    for (int i = 0; i < count; i++) {
+        string name = get_random_name();
+        string id = get_random_id();
+        char gender = genders[get_random_int(0, 1)];
+        Time arrivalTime = get_random_time(Time::systemTime, 1 , count);
+        auto type = (i&1 ? PatientType::URGENT: PatientType::NORMAL);
+        auto *p = new Patient( name , id , gender , arrivalTime , type ) ;
+        patients.push_back(p);
+    }
+    // sort patients by arrival time
+    std::sort(patients.begin(), patients.end(), [](Patient *a, Patient *b) {
+        return a->get_arrival_time() < b->get_arrival_time();
+    });
 
-    s.servePatients(5);
-    s.printStatus();
-    for(int i = 0; i < 20; i++)
-        Time::advanceSystemTime();
-    s.RemoveServedPatients();
-    s.printStatus();
-    return 0;
+    while ( !patients.empty() || s.getNumberOfWaitingPatients() + s.getNumberOfInservicePeople() > 0 ) {
+        cout << "Enter to Continue or (q) to skip the simulation:  " <<endl ;
+        string input ;
+        getline(cin, input);
+        if ( input == "q" ) break ;
+
+        Time::systemTime.increase_minutes(1);
+        if ( !patients.empty()  ) {
+            while ( !patients.empty() && patients.front()->get_arrival_time() <= Time::systemTime ){
+                s.addPatient(patients.front());
+                patients.erase(patients.begin());
+            }
+        }
+
+        s.removeServedPatients();
+        s.servePatients(get_random_int(5 , 10));
+        s.printStatus();
+    }
+
+    s.printStatistics();
 }

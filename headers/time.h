@@ -1,6 +1,5 @@
-#ifndef TIME_H
-#define TIME_H
-
+#ifndef LABASSIGNMENT_TIME_H
+#define LABASSIGNMENT_TIME_H
 // Include the necessary libraries
 #include <ostream>
 #include <stdexcept>
@@ -11,52 +10,62 @@ using std::invalid_argument;
 
 // Time class
 class Time {
-  // Static member to store the system time
-  private:
 
-  // Static member functions
-  public:
+    // Static member functions
+public:
     static Time systemTime;
-    static void initializeTime();
     static Time getSystemTime();
-    static void advanceSystemTime();
 
-  // Private members
-  private:
+    // Private members
+private:
     int hours, minutes;
 
-  // Public members
-  public:
+    // Public members
+public:
+
 
     // Constructors
     Time(int = 0, int = 0);
 
-    // Operators
-    bool operator==(Time &);
+
+    // difference between two times in minutes
+    int get_difference_in_minutes(Time &);
+
+    // copy constructor
+    Time(const Time &);
+    // comparison operators
+    bool operator==(Time &) const;
     bool operator==(Time &&);
     bool operator!=(Time &);
     bool operator!=(Time &&);
-    bool operator>(Time &);
+    bool operator>(Time &) const;
     bool operator>(Time &&);
     bool operator>=(Time &);
     bool operator>=(Time &&);
     bool operator<(Time &);
-    bool operator<(Time &&therTime);
+    bool operator<(Time &&);
     bool operator<=(Time &);
     bool operator<=(Time &&);
-    Time operator-(Time &);
-    Time operator-(Time &&);
-
     // Friend functions
     friend ostream& operator<<(ostream &, Time &);
-    friend ostream& operator<<(ostream &, Time &&);
+    friend ostream& operator<<(ostream &, Time );
     
+
+
+
+
+    // Friend functions
+    friend ostream& operator<<(ostream &, Time );
+    friend ostream& operator<<(ostream &, Time &);
+
     // Setters and Getters
     void set_hours(int);
+    void increase_hours(int);
+    void increase_minutes(int);
     void set_minutes(int);
     int get_hours() const;
     int get_minutes() const;
 
 };
 
-#endif // TIME_H
+#endif //LABASSIGNMENT_TIME_H

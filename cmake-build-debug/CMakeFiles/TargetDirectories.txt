@@ -1,0 +1,3 @@
+/Users/ayman/Programming/CLionProjects/LabAssignment/cmake-build-debug/CMakeFiles/LabAssignment.dir
+/Users/ayman/Programming/CLionProjects/LabAssignment/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ayman/Programming/CLionProjects/LabAssignment/cmake-build-debug/CMakeFiles/rebuild_cache.dir

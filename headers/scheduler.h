@@ -1,49 +1,48 @@
-#ifndef SCHDULER_H
-#define SCHDULER_H
+#ifndef LABASSIGNMENT_SCHEDULER_H
+#define LABASSIGNMENT_SCHEDULER_H
 
-// Include the neccessary libraries
+#ifndef SCHEDULER_H
+#define SCHEDULER_H
+
 #include <deque>
 #include <vector>
-#include <queue>
 #include <iostream>
+#include <stdexcept>
+#include "patient.h"
+#include "time.h"
 
-// Include the necessary headers
-#include "../headers/time.h"
-#include "../headers/patient.h"
-#include "../utilities/enums.h"
-
-// Use the necessary standard namespace
-using std::deque;
-using std::vector;
-using std::queue;
-using std::cout;
-
-// Scheduler class
 class Scheduler {
-
-// Private members
 private:
-    deque<Patient*> inService;
-    vector<Patient*> served;
-    queue<Patient*> urgent, normal;
+    std::deque<Patient*> urgent, normal, inService; // Waiting queues
+    std::vector<Patient*> served;                  // List of served patients
+    int ServedUrgent = 0, ServedNormal = 0;        // Counters for served patients
+    double total_waiting_time = 0;                 // Total waiting time
 
-// Public members
 public:
+    // Add a patient to the appropriate queue
+    void addPatient(Patient *p);
 
-    // Destructor
-    ~Scheduler();
+    // Serve a specified number of patients
+    void servePatients(int numberOfPatients);
 
-    // Member functions
-    void addPatient(Patient*);
-    void servePatients(int);
-    void RemoveServedPatients();
+    // Remove patients who have completed their service
+    void removeServedPatients();
 
-    // Helper functions
+    // Print the current status of the scheduler
     void printStatus();
 
-    // Getters and Setters
+    // Print statistics about served patients
+    void printStatistics();
+
+    // Get the number of patients waiting in the queue
     int getNumberOfWaitingPatients();
+
+    // Get the number of patients currently in service
+    int getNumberOfInservicePeople();
+
+    // Destructor to clean up dynamically allocated memory
+    ~Scheduler();
 };
 
-
-#endif // SCHDULER_H
+#endif // SCHEDULER_H
+#endif //LABASSIGNMENT_SCHEDULER_H

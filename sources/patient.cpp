@@ -1,18 +1,16 @@
 #include "../headers/patient.h"
 
-
 // Constructors
-Patient::Patient(string _name, string _id, char _gender, Time _arrivalTime, PatientType _urgent){
+Patient::Patient(string _name, string _id, char _gender, Time _arrivalTime, PatientType _type ){
     name = _name;
     id = _id;
     set_gender(_gender);
     arrivalTime = _arrivalTime ;
-    urgent = _urgent;
+    type = _type ;
 }
 
-// Setters and Getters
-Time Patient::timeInService(){
-    return (Time::getSystemTime() - arrivalTime);
+int  Patient::timeInService(){
+    return (Time::getSystemTime().get_difference_in_minutes(arrivalTime));
 }
 
 void Patient::set_gender(char g){
@@ -24,4 +22,8 @@ void Patient::set_gender(char g){
 
 string Patient::get_name(){ return name ; }
 string Patient::get_id(){ return id ; }
-PatientType Patient::is_urgent(){ return urgent ; }
+bool Patient::is_urgent(){ return type == PatientType::URGENT ; }
+
+Time Patient::get_arrival_time(){
+    return arrivalTime;
+}
