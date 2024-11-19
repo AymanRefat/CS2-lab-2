@@ -30,6 +30,9 @@ private:
 // Public members
 public:
 
+    // Destructor
+    ~Scheduler();
+
     // Member functions
     void addPatient(Patient*);
     void servePatients(int);
