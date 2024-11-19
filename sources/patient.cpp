@@ -10,7 +10,7 @@ Patient::Patient(string _name, string _id, char _gender, Time _arrivalTime, Pati
 }
 
 int  Patient::timeInService(){
-    return (Time::getSystemTime().get_difference_in_minutes(arrivalTime));
+    return (Time::getSystemTime().getDifferenceInMinutes(arrivalTime));
 }
 
 void Patient::set_gender(char g){
@@ -20,10 +20,10 @@ void Patient::set_gender(char g){
     this->gender = g;
 }
 
-string Patient::get_name(){ return name ; }
-string Patient::get_id(){ return id ; }
-bool Patient::is_urgent(){ return type == PatientType::URGENT ; }
+string Patient::getName(){ return name ; }
+string Patient::getId(){ return id ; }
+bool Patient::isUrgent(){ return type == PatientType::URGENT ; }
 
-Time Patient::get_arrival_time(){
+Time Patient::getArrivalTime(){
     return arrivalTime;
 }

@@ -29,7 +29,7 @@ public:
 
 
     // difference between two times in minutes
-    int get_difference_in_minutes(Time &);
+    int getDifferenceInMinutes(Time &);
 
     // copy constructor
     Time(const Time &);
@@ -59,12 +59,12 @@ public:
     friend ostream& operator<<(ostream &, Time &);
 
     // Setters and Getters
-    void set_hours(int);
-    void increase_hours(int);
-    void increase_minutes(int);
-    void set_minutes(int);
-    int get_hours() const;
-    int get_minutes() const;
+    void setHours(int);
+    void increaseHours(int);
+    void increaseMinutes(int);
+    void setMinutes(int);
+    int getHours() const;
+    int getMinutes() const;
 
 };
 

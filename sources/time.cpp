@@ -11,59 +11,59 @@ Time Time::getSystemTime() {
 
 // Constructors
 Time::Time( int _hours, int _minutes){
-    set_hours(_hours);
-    set_minutes(_minutes);
+    setHours(_hours);
+    setMinutes(_minutes);
 }
 
 // Setters and Getters
-void Time::set_hours(int _hours){
+void Time::setHours(int _hours){
     if ( _hours < 0 || _hours >= 24 )
         throw invalid_argument("Wrong time format, hours should be in range [0,24)");
     hours = _hours;
 }
 
-void Time::set_minutes(int _minutes){
+void Time::setMinutes(int _minutes){
     if (_minutes < 0 || _minutes >= 60)
         throw invalid_argument("Wrong time format , Mintues should be between [0,60)");
     minutes = _minutes;
 }
 
-int Time::get_hours() const { return hours ; }
-int Time::get_minutes() const{ return minutes ; }
+int Time::getHours() const { return hours ; }
+int Time::getMinutes() const{ return minutes ; }
 
-void Time::increase_hours(int n ) {
-    set_hours((hours + n)%24);
+void Time::increaseHours(int n ) {
+    setHours((hours + n)%24);
 }
-void Time::increase_minutes(int n ) {
+void Time::increaseMinutes(int n ) {
     int newMinutes = minutes + n;
-    increase_hours(newMinutes/60);
-    set_minutes(newMinutes%60);
+    increaseHours(newMinutes/60);
+    setMinutes(newMinutes%60);
 }
 
 ostream& operator<<(ostream &out, Time &time){
-    out << time.get_hours() << ":" << time.get_minutes();
+    out << time.getHours() << ":" << time.getMinutes();
     return out;
 }
 ostream& operator<<(ostream &out, Time time){
-    out << time.get_hours() << ":" << time.get_minutes();
+    out << time.getHours() << ":" << time.getMinutes();
     return out;
 }
 
-int Time::get_difference_in_minutes(Time & other ) {
+int Time::getDifferenceInMinutes(Time & other ) {
     // Total of First - Total of Second
-    return  abs((hours * 60 + minutes) - (other.get_hours() * 60 + other.get_minutes()));
+    return  abs((hours * 60 + minutes) - (other.getHours() * 60 + other.getMinutes()));
 }
 
 // Copy Constructor
 Time::Time(const Time &otherTime){
-    hours = otherTime.get_hours();
-    minutes = otherTime.get_minutes();
+    hours = otherTime.getHours();
+    minutes = otherTime.getMinutes();
 }
 
 
 // operators
 bool Time::operator==(Time &otherTime) const{
-    return hours == otherTime.get_hours() && minutes == otherTime.get_minutes();
+    return hours == otherTime.getHours() && minutes == otherTime.getMinutes();
 }
 
 bool Time::operator==(Time &&otherTime){
@@ -79,9 +79,9 @@ bool Time::operator!=(Time &&otherTime){
 }
 
 bool Time::operator>(Time &otherTime) const{
-    if ( hours > otherTime.get_hours() )
+    if ( hours > otherTime.getHours() )
         return true;
-    else if ( hours == otherTime.get_hours() && minutes > otherTime.get_minutes() )
+    else if ( hours == otherTime.getHours() && minutes > otherTime.getMinutes() )
         return true;
     return false;
 }

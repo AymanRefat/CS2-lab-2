@@ -16,7 +16,7 @@ private:
     std::deque<Patient*> urgent, normal, inService; // Waiting queues
     std::vector<Patient*> served;                  // List of served patients
     int ServedUrgent = 0, ServedNormal = 0;        // Counters for served patients
-    double total_waiting_time = 0;                 // Total waiting time
+    double totalWaitingTime = 0;                 // Total waiting time
 
 public:
     // Add a patient to the appropriate queue
@@ -38,7 +38,7 @@ public:
     int getNumberOfWaitingPatients();
 
     // Get the number of patients currently in service
-    int getNumberOfInservicePeople();
+    int getNumberOfInservicePatients();
 
     // Destructor to clean up dynamically allocated memory
     ~Scheduler();
