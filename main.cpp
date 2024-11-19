@@ -1,11 +1,12 @@
 // Include the necessary libraries
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include <queue>
 #include "headers/patient.h"
 #include "headers/scheduler.h"
 #include "headers/time.h"
-using namespace std ;
+using namespace std;
 
 int main() {
     int count = get_patients_count_based_on_scenario();
