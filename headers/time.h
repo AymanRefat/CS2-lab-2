@@ -54,8 +54,8 @@ class Time {
     // Setters and Getters
     void set_hours(int);
     void set_minutes(int);
-    int get_hours();
-    int get_minutes();
+    int get_hours() const;
+    int get_minutes() const;
 
 };
 

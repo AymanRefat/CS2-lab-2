@@ -114,16 +114,16 @@ ostream& operator<<(ostream &out, Time &&time){
 
 // Setters and Getters
 void Time::set_hours(int _hours){
-    if ( _hours < 0 && _hours >= 24 )
+    if ( _hours < 0 || _hours >= 24 )
         throw invalid_argument("Wrong time format, hours should be in range [0,24)");
     hours = _hours;
 }
 
 void Time::set_minutes(int _minutes){
-    if (_minutes < 0 && _minutes >= 60) 
+    if (_minutes < 0 || _minutes >= 60)
         throw invalid_argument("Wrong time format , Mintues should be between [0,60)");
     minutes = _minutes;
 }
 
-int Time::get_hours() { return hours ; }
-int Time::get_minutes(){ return minutes ; }
+int Time::get_hours() const { return hours ; }
+int Time::get_minutes() const{ return minutes ; }
