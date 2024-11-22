@@ -21,12 +21,12 @@ public:
     Patient(string , string, char, Time, PatientType = PatientType::NORMAL);
 
     // Setters and Getters
-    bool is_urgent();
+    bool isUrgent();
     int timeInService();
-    void set_gender(char);
-    string get_name();
-    string get_id();
-    Time get_arrival_time();
+    void setGender(char);
+    string getName();
+    string getId();
+    Time getArrivalTime();
 
 };
 #endif //LABASSIGNMENT_PATIENT_H

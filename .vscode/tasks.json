@@ -11,6 +11,7 @@
         "sources/time.cpp",
         "sources/patient.cpp",
         "sources/scheduler.cpp",
+        "sources/utilities.cpp",
         "-o",
         "${fileDirname}\\${fileBasenameNoExtension}.exe"
       ],
